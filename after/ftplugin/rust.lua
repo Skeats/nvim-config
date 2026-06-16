@@ -1,4 +1,5 @@
 local bufnr = vim.api.nvim_get_current_buf()
+
 vim.keymap.set(
   "n",
   "<leader>a",
@@ -8,6 +9,7 @@ vim.keymap.set(
   end,
   { silent = true, buffer = bufnr }
 )
+
 vim.keymap.set(
   "n",
   "K",  -- Override Neovim's built-in hover keymap with rustaceanvim's hover actions

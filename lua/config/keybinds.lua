@@ -13,3 +13,8 @@ set("n", "<S-Tab>", ":bprevious<CR>", { noremap = true, silent = true })
 set("n", "<leader>bd", ":bdelete<CR>")
 
 set("n", "<C-a>", "ggVG")
+
+-- Make ctrl + backspace delete entire words
+set("i", "<C-H>", "<C-w>", { noremap = true, silent = true })
+set("i", "<C-BS>", "<C-w>", { noremap = true, silent = true })
+set("c", "<C-BS>", "<C-w>", { noremap = true, silent = true })

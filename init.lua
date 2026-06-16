@@ -6,4 +6,3 @@ require('config.lazy')
 vim.cmd("colorscheme gruvbox")
 
 vim.lsp.enable('rust_analyzer')
-

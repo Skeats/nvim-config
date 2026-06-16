@@ -1,5 +1,12 @@
 return {
-  'nvim-treesitter/nvim-treesitter',
-  lazy = false,
-  build = ':TSUpdate',
+    'nvim-treesitter/nvim-treesitter',
+    lazy = false,
+    build = ':TSUpdate',
+    config = function()
+        local config = require("nvim-treesitter")
+        config.setup({
+            install_dir = vim.fn.stdpath("data") .. "/site"
+        })
+        config.install({ "rust" }):wait(300000)
+    end
 }

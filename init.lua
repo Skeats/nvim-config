@@ -3,6 +3,7 @@ require('config.keybinds')
 require('config.autocmd')
 require('config.lazy')
 
+-- Startup theme
 vim.cmd("colorscheme gruvbox")
 
-vim.lsp.enable('rust_analyzer')
+-- LSP servers

@@ -1,4 +1,5 @@
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 vim.diagnostic.config({
 	virtual_text  = true,
@@ -44,11 +45,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 			vim.lsp.inlay_hint.enable(true, { bufnr = buf })
 		end
 
-		-- Code completion
-		if client:supports_method("textDocument/completion") then
-			vim.lsp.completion.enable(true, client.id, buf, {})
-		end
-
 		-- Document highlighting
 		if client:supports_method('textDocument/documentHighlight') then
 			local highlight_augroup = vim.api.nvim_create_augroup('my.lsp.highlight', { clear = false })
@@ -86,7 +82,7 @@ vim.lsp.config['luals'] = {
 	cmd = { 'lua-language-server' },
 	filetypes = { 'lua' },
 	root_markers = { { '.luarc.json', '.luarc.jsonc' }, '.git' },
-	capabilities = caps,
+	capabilities = capabilities,
 	settings = {
 		Lua = {
 			runtime = { version = 'LuaJIT' },
@@ -103,7 +99,7 @@ vim.lsp.config['luals'] = {
 	},
 }
 
-vim.lsp.config('rust_analyzer', {
+vim.lsp.config['rust_analyzer'] = {
 	capabilities = capabilities,
 	settings = {
 		['rust-analyzer'] = {
@@ -134,6 +130,7 @@ vim.lsp.config('rust_analyzer', {
 			},
 			cargo = {
 				allFeatures = true,
+				loadOutDirsFromCheck = true,
 				buildScripts = {
 					enable = true,
 				},
@@ -143,11 +140,17 @@ vim.lsp.config('rust_analyzer', {
 			},
 			checkOnSave = {
 				enable = true,
+				allFeatures = true,
 				command = "clippy  -- -W clippy:pedantic"
 			},
 			check = {
 				allTargets = true,
 			},
+			completion = {
+				autoImport = {
+					enable = true,
+				},
+			},
 		}
 	}
-})
+}

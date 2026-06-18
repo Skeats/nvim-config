@@ -16,15 +16,11 @@ cmp.setup({
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
 	}),
 	sources = cmp.config.sources({
-			{ name = "nvim-lsp" },
+			{ name = "nvim_lsp", },
 			{ name = "luasnip" },
 		},
 		{
 			{ name = "buffer" },
 			{ name = "path" },
 		}),
-	get_trigger_characters = function(trigger_characters)
-		vim.list_extend(trigger_characters, { ".", ":" })
-		return trigger_characters
-	end
 })

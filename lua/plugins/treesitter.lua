@@ -7,6 +7,6 @@ return {
 		config.setup({
 			install_dir = vim.fn.stdpath("data") .. "/site"
 		})
-		config.install({ "rust", "c", "cpp", "make" }):wait(300000)
+		config.install({ "rust", "c", "cpp", "make", "html" }):wait(300000)
 	end
 }

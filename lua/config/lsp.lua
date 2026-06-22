@@ -162,3 +162,10 @@ vim.lsp.config['html'] = {
 	},
 
 }
+
+vim.lsp.config["gopls"] = {
+	capabilities = capabilities,
+	settings = {
+
+	}
+}

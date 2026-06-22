@@ -2,6 +2,9 @@
 
 local cmp = require("cmp")
 
+-- Limits the size of the popup for autocomplete to 10 entries
+vim.o.pumheight = 10
+
 cmp.setup({
 	snippet = {
 		expand = function(args)

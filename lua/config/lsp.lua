@@ -79,9 +79,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 -- Lua LSP config
 vim.lsp.config['luals'] = {
-	cmd = { 'lua-language-server' },
-	filetypes = { 'lua' },
-	root_markers = { { '.luarc.json', '.luarc.jsonc' }, '.git' },
 	capabilities = capabilities,
 	settings = {
 		Lua = {
@@ -89,10 +86,6 @@ vim.lsp.config['luals'] = {
 			diagnostics = { globals = { 'vim' } },
 			workspace = {
 				checkThirdParty = false,
-				library = vim.list_extend(
-					vim.api.nvim_get_runtime_file('', true),
-					{ '/home/tony/repos/oxwm/templates' }
-				),
 			},
 			telemetry = { enable = false },
 		},
@@ -141,7 +134,8 @@ vim.lsp.config['rust_analyzer'] = {
 			checkOnSave = {
 				enable = true,
 				allFeatures = true,
-				command = "clippy  -- -W clippy:pedantic"
+				command = "clippy",
+				extraArgs = { "--", "-D", "clippy:pedantic" },
 			},
 			check = {
 				allTargets = true,
@@ -153,4 +147,18 @@ vim.lsp.config['rust_analyzer'] = {
 			},
 		}
 	}
+}
+
+vim.lsp.config['clangd'] = {
+	capabilities = capabilities,
+	settings = {
+	},
+}
+
+vim.lsp.config['html'] = {
+	capabilities = capabilities,
+	settings = {
+
+	},
+
 }

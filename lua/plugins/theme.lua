@@ -34,10 +34,6 @@ return {
 	    vim.cmd.colorscheme("gruvbox")
 	end
     },
-    {
-	"folke/tokyonight.nvim",
-	config = function()
-	    vim.cmd.colorscheme "tokyonight"
-	end
-    }
+	{ "rose-pine/neovim", name = "rose-pine" },
+    { "folke/tokyonight.nvim", name = "tokyo-night" }
 }
